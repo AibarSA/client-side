@@ -63,7 +63,51 @@ export class MyAccountComponent implements OnInit {
     return this.http.post(url, '', {headers: headers});
   }
 
+  onNewAccount() {
+    this.usernameExists = false;
+    this.emailExists = false;
+    this.emailSent = false;
+
+    this.userService.newUser(this.username, this.email).subscribe(
+      res => {
+        console.log(res);
+        this.emailSent = true;
+      },
+      error => {
+        console.log(error.text());
+        const errorMessage = error.text();
+        if (errorMessage === 'usernameExists') { this.usernameExists = true; }
+        if (errorMessage ===  'emailExists') { this.emailExists = true; }
+      }
+    );
+  }
+
+  onForgetPassword() {
+    this.forgetPasswordEmailSent = false;
+    this.emailNotExists = false;
+
+    this.userService.retrievePassword(this.recoverEmail).subscribe(
+      res => {
+        console.log(res);
+        this.forgetPasswordEmailSent = true;
+      },
+      error => {
+        console.log(error.text());
+        const errorMessage = error.text();
+        if (errorMessage === 'Email not found') { this.emailNotExists = true; }
+      }
+    );
+  }
+
   ngOnInit() {
+    this.loginService.checkSession().subscribe(
+      res => {
+        this.loggedIn = true;
+      },
+      error => {
+        this.loggedIn = false;
+      }
+    );
   }
 
 }

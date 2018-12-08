@@ -5,6 +5,9 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import 'hammerjs';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import {LoginService} from './services/login.service';
 import {UserService} from './services/user.service';
@@ -27,9 +30,12 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
+    MatTabsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
+      { path: 'myAccount', component: MyAccountComponent},
 
     ])
   ],
