@@ -55,12 +55,12 @@ export class UserService {
       'x-auth-token': localStorage.getItem('xAuthToken')
     });
 
-    return this.http.post(url, JSON.stringify(userInfo),{headers: tokenHeader});
+    return this.http.post(url, JSON.stringify(userInfo), {headers: tokenHeader});
   }
 
   getCurrentUser() {
     const url = this.serverPath + '/user/getCurrentUser';
-    const tokenHeader = new Headers({
+    const tokenHeader = new HttpHeaders({
       'Content-Type' : 'application/json',
       'x-auth-token' : localStorage.getItem('xAuthToken')
     });

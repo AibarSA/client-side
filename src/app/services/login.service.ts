@@ -24,4 +24,22 @@ export class LoginService {
     return this.http.get(url, {headers: headers});
   }
 
+  checkSession() {
+    const url = this.serverPath + '/checkSession';
+    const headers = new HttpHeaders({
+      'x-auth-token' : localStorage.getItem('xAuthToken')
+    });
+
+    return this.http.get(url, {headers: headers});
+  }
+
+  logout() {
+    const url = this.serverPath + '/user/logout';
+    const headers = new HttpHeaders({
+      'x-auth-token' : localStorage.getItem('xAuthToken')
+    });
+
+    return this.http.post(url, '', {headers: headers});
+  }
+
 }
