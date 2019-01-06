@@ -13,6 +13,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {LoginService} from './services/login.service';
 import {UserService} from './services/user.service';
 import {PaymentService} from './services/payment.service';
+import {ShippingService} from './services/shipping.service';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     HomeComponent,
     NavBarComponent,
     MyAccountComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
   providers: [
     LoginService,
     UserService,
-    PaymentService
+    PaymentService,
+    ShippingService
   ],
   bootstrap: [AppComponent]
 })
